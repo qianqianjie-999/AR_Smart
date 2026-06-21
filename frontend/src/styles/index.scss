@@ -1,0 +1,497 @@
+// ==================== 公共颜色变量 ====================
+$primary-color: #409eff;
+$success-color: #67c23a;
+$warning-color: #e6a23c;
+$danger-color: #f56c6c;
+$info-color: #909399;
+
+$bg-color: #f0f2f5;
+$sidebar-bg: #304156;
+$sidebar-text: #bfcbd9;
+$sidebar-active: #409eff;
+$header-bg: #fff;
+$header-height: 60px;
+$sidebar-width: 220px;
+$sidebar-collapsed-width: 64px;
+
+// 新增：现代化设计变量
+$card-radius: 12px;
+$card-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+$card-shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
+$transition-base: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+// ==================== 重置样式 ====================
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #app {
+  height: 100%;
+  font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB',
+    'Microsoft YaHei', Arial, sans-serif;
+  font-size: 14px;
+  color: #333;
+  background-color: $bg-color;
+}
+
+a {
+  color: $primary-color;
+  text-decoration: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+// ==================== 布局样式 ====================
+.app-wrapper {
+  display: flex;
+  height: 100%;
+}
+
+.sidebar-container {
+  width: $sidebar-width;
+  background-color: $sidebar-bg;
+  transition: width 0.3s;
+  overflow: hidden;
+  flex-shrink: 0;
+
+  &.collapsed {
+    width: $sidebar-collapsed-width;
+  }
+
+  .sidebar-logo {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    white-space: nowrap;
+    overflow: hidden;
+
+    img {
+      width: 32px;
+      height: 32px;
+      margin-right: 8px;
+    }
+  }
+
+  .el-menu {
+    border-right: none;
+  }
+}
+
+.main-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.navbar {
+  height: $header-height;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.03);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  flex-shrink: 0;
+  border-bottom: 1px solid #e8ecf1;
+  z-index: 10;
+
+  .navbar-left {
+    display: flex;
+    align-items: center;
+
+    .hamburger {
+      font-size: 20px;
+      cursor: pointer;
+      margin-right: 18px;
+      color: #64748b;
+      padding: 8px;
+      border-radius: 8px;
+      transition: $transition-base;
+
+      &:hover {
+        color: $primary-color;
+        background: rgba(64, 158, 255, 0.08);
+      }
+    }
+
+    .breadcrumb {
+      font-size: 13px;
+    }
+  }
+
+  .navbar-right {
+    display: flex;
+    align-items: center;
+
+    .el-dropdown-link {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      color: #334155;
+      padding: 6px 12px;
+      border-radius: 10px;
+      transition: $transition-base;
+
+      &:hover {
+        background: rgba(64, 158, 255, 0.06);
+      }
+
+      .el-avatar {
+        margin-right: 8px;
+      }
+    }
+  }
+}
+
+.app-main {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+  background: #f1f5f9;
+  background-image: radial-gradient(ellipse at 20% 0%, rgba(64, 158, 255, 0.03) 0%, transparent 50%);
+}
+
+// ==================== 表格样式优化 ====================
+.table-container {
+  background: #fff;
+  padding: 24px;
+  border-radius: $card-radius;
+  box-shadow: $card-shadow;
+  transition: $transition-base;
+
+  .table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+    .table-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #1e293b;
+      position: relative;
+      padding-left: 14px;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 4px;
+        height: 18px;
+        background: $primary-color;
+        border-radius: 2px;
+      }
+    }
+  }
+}
+
+// ==================== 搜索表单样式 ====================
+.search-form {
+  background: #fff;
+  padding: 20px 24px 4px;
+  margin-bottom: 16px;
+  border-radius: $card-radius;
+  box-shadow: $card-shadow;
+  transition: $transition-base;
+}
+
+// ==================== 统计卡片样式 ====================
+.stat-card-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.stat-card {
+  flex: 1;
+  min-width: 200px;
+  background: #fff;
+  padding: 24px 20px;
+  border-radius: $card-radius;
+  box-shadow: $card-shadow;
+  display: flex;
+  align-items: center;
+  transition: $transition-base;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #f1f5f9;
+
+  // 左侧装饰条
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 12px;
+    bottom: 12px;
+    width: 4px;
+    border-radius: 0 4px 4px 0;
+    background: $primary-color;
+    opacity: 0.4;
+    transition: $transition-base;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: $card-shadow-hover;
+    border-color: #e2e8f0;
+
+    &::after {
+      opacity: 0.8;
+    }
+  }
+
+  .stat-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    margin-right: 16px;
+    flex-shrink: 0;
+  }
+
+  .stat-info {
+    .stat-value {
+      font-size: 26px;
+      font-weight: 700;
+      color: #1e293b;
+      line-height: 1.3;
+      letter-spacing: -0.5px;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: #64748b;
+      margin-top: 3px;
+      font-weight: 500;
+    }
+  }
+}
+
+// ==================== 弹窗表单样式 ====================
+.dialog-form {
+  .el-form-item {
+    margin-bottom: 20px;
+  }
+}
+
+// ==================== 页面标题 ====================
+.page-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 22px;
+    background: $primary-color;
+    border-radius: 2px;
+  }
+}
+
+// ==================== Element Plus 表格美化 ====================
+.el-table {
+  --el-table-border-color: #e8ecf1;
+  --el-table-header-bg-color: #f8fafc;
+  --el-table-row-hover-bg-color: #f0f7ff;
+  border-radius: 8px;
+  overflow: hidden;
+
+  th.el-table__cell {
+    font-weight: 600;
+    color: #475569;
+    font-size: 13px;
+    height: 48px;
+  }
+
+  td.el-table__cell {
+    color: #334155;
+    font-size: 13px;
+  }
+}
+
+// ==================== Element Plus 按钮美化 ====================
+.el-button--primary {
+  --el-button-bg-color: #{$primary-color};
+  --el-button-border-color: #{$primary-color};
+  --el-button-hover-bg-color: #{lighten($primary-color, 8%)};
+  --el-button-hover-border-color: #{lighten($primary-color, 8%)};
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.el-button {
+  border-radius: 8px;
+  font-weight: 500;
+  transition: $transition-base;
+}
+
+// ==================== Element Plus 输入框美化 ====================
+.el-input__wrapper {
+  border-radius: 8px !important;
+  box-shadow: 0 0 0 1px #e2e8f0 inset !important;
+  transition: $transition-base;
+
+  &:hover {
+    box-shadow: 0 0 0 1px #cbd5e1 inset !important;
+  }
+}
+
+.el-input.is-focus .el-input__wrapper {
+  box-shadow: 0 0 0 1px $primary-color inset !important;
+}
+
+.el-select .el-input__wrapper {
+  border-radius: 8px !important;
+}
+
+// ==================== Element Plus 分页美化 ====================
+.el-pagination {
+  margin-top: 16px;
+  justify-content: flex-end;
+
+  .el-pager li {
+    border-radius: 6px;
+    font-weight: 500;
+  }
+
+  .btn-prev, .btn-next {
+    border-radius: 6px;
+  }
+}
+
+// ==================== Element Plus 标签美化 ====================
+.el-tag {
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+// ==================== Element Plus 弹窗美化 ====================
+.el-dialog {
+  border-radius: 14px;
+  overflow: hidden;
+
+  .el-dialog__header {
+    padding: 20px 24px 16px;
+    border-bottom: 1px solid #f1f5f9;
+    margin-right: 0;
+  }
+
+  .el-dialog__body {
+    padding: 24px;
+  }
+
+  .el-dialog__footer {
+    padding: 16px 24px 20px;
+    border-top: 1px solid #f1f5f9;
+  }
+}
+
+// ==================== 过渡动画 ====================
+.fade-transform-leave-active,
+.fade-transform-enter-active {
+  transition: all 0.3s;
+}
+
+.fade-transform-enter-from {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+.fade-transform-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+// ==================== 响应式适配 ====================
+@media screen and (max-width: 768px) {
+  .sidebar-container {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 1000;
+    transform: translateX(-100%);
+
+    &.collapsed {
+      transform: translateX(0);
+      width: $sidebar-width !important;
+    }
+  }
+
+  .app-main {
+    padding: 12px;
+  }
+
+  .stat-card-row {
+    .stat-card {
+      min-width: calc(50% - 8px);
+    }
+  }
+
+  .search-form {
+    .el-form-item {
+      width: 100%;
+      margin-right: 0;
+    }
+  }
+}
+
+// ==================== 常用工具类 ====================
+.text-right { text-align: right; }
+.text-center { text-align: center; }
+.mt-8 { margin-top: 8px; }
+.mt-16 { margin-top: 16px; }
+.mt-20 { margin-top: 20px; }
+.mb-8 { margin-bottom: 8px; }
+.mb-16 { margin-bottom: 16px; }
+.mb-20 { margin-bottom: 20px; }
+.mr-8 { margin-right: 8px; }
+.ml-8 { margin-left: 8px; }
+.flex { display: flex; }
+.flex-between { display: flex; justify-content: space-between; align-items: center; }
+
+// ==================== 滚动条美化 ====================
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c0c4cc;
+  border-radius: 3px;
+
+  &:hover {
+    background: #909399;
+  }
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
