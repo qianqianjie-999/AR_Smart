@@ -1,0 +1,1 @@
+import{V as t}from"./index-51OjvfJx.js";function i(e){return t({url:"/invoice/",method:"get",params:e})}function r(e){return t({url:"/invoice/",method:"post",data:e})}function u(e,n){return t({url:`/invoice/${e}`,method:"put",data:n})}function c(e){return t({url:`/invoice/${e}`,method:"delete"})}export{r as c,c as d,i as g,u};

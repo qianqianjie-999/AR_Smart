@@ -1,0 +1,1 @@
+import{V as i}from"./index-51OjvfJx.js";function n(t){return i({url:"/limitation/",method:"get",params:t})}function a(){return i({url:"/limitation/dashboard",method:"get"})}function e(t,r){return i({url:`/limitation/${t}/interrupt`,method:"post",data:r})}export{a,n as g,e as i};

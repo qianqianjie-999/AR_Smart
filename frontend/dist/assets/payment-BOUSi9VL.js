@@ -1,0 +1,1 @@
+import{V as e}from"./index-51OjvfJx.js";function u(t){return e({url:"/payment/",method:"get",params:t})}function a(t){return e({url:"/payment/",method:"post",data:t})}function m(t,n){return e({url:`/payment/${t}`,method:"put",data:n})}function o(t){return e({url:`/payment/${t}`,method:"delete"})}export{a as c,o as d,u as g,m as u};

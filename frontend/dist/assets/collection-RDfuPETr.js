@@ -1,0 +1,1 @@
+import{V as e}from"./index-51OjvfJx.js";function n(t){return e({url:"/collection/",method:"get",params:t})}function c(t){return e({url:"/collection/",method:"post",data:t})}function r(t,o){return e({url:`/collection/${t}`,method:"put",data:o})}function u(t){return e({url:`/collection/${t}`,method:"delete"})}export{c,u as d,n as g,r as u};
