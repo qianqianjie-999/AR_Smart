@@ -36,9 +36,12 @@ Thumbs.db
 backend/uploads/*
 !backend/uploads/.gitkeep
 
-# Node.js（但保留 dist）
+# Node.js（但保留 frontend/dist 用于部署）
 frontend/node_modules/
 frontend/.vite/
+# 排除其他 dist，但保留 frontend/dist
+dist/
+!frontend/dist/
 
 # 日志和临时文件
 *.log
