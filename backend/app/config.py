@@ -9,7 +9,8 @@ class Config:
     JWT_REFRESH_TOKEN_EXPIRES = timedelta(days=7)
 
     SQLALCHEMY_DATABASE_URI = os.environ.get(
-        'DATABASE_URL', 'mysql+pymysql://root:root123@127.0.0.1:3306/arms_db'
+        'DATABASE_URL',
+        f"mysql+pymysql://{os.environ.get('DB_USER', 'root')}:{os.environ.get('DB_PASSWORD', 'root123')}@{os.environ.get('DB_HOST', '127.0.0.1')}:{os.environ.get('DB_PORT', '3306')}/{os.environ.get('DB_NAME', 'arms_db')}"
     )
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_ENGINE_OPTIONS = {
