@@ -6,8 +6,13 @@ from flask_cors import CORS
 from apscheduler.schedulers.background import BackgroundScheduler
 from dotenv import load_dotenv
 
-# 加载 .env 文件（在导入 config 之前）
-dotenv_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), '.env')
+# 加载 .env 文件（项目根目录）
+# __file__ = backend/app/__init__.py
+# dirname(__file__) = backend/app
+# dirname(dirname(__file__)) = backend
+# dirname(dirname(dirname(__file__))) = 项目根目录
+project_root = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+dotenv_path = os.path.join(project_root, '.env')
 if os.path.exists(dotenv_path):
     load_dotenv(dotenv_path)
 
