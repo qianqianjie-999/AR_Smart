@@ -137,6 +137,8 @@ CREATE TABLE contract (
     audit_amount        DECIMAL(18,2) DEFAULT 0 COMMENT '审计（结算）金额（元）',
     payment_method      TEXT COMMENT '付款方式说明',
     payment_terms       TEXT COMMENT '付款节点描述',
+    breach_clause       TEXT COMMENT '违约条款',
+    penalty_interest    VARCHAR(100) DEFAULT '日万分之五' COMMENT '逾期利息/罚息利率',
     status              VARCHAR(20) DEFAULT '执行中' COMMENT '状态：执行中/已完成/已终止',
     total_paid          DECIMAL(18,2) DEFAULT 0 COMMENT '累计回款金额（元）',
     outstanding_amount  DECIMAL(18,2) DEFAULT 0 COMMENT '尚欠金额（元）',
@@ -150,6 +152,7 @@ CREATE TABLE contract (
     updated_at          DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     created_by          BIGINT COMMENT '创建人ID',
     updated_by          BIGINT COMMENT '更新人ID',
+    remark              TEXT COMMENT '备注',
     FOREIGN KEY (customer_id) REFERENCES customer(id),
     INDEX idx_customer (customer_id),
     INDEX idx_status (status),
@@ -203,6 +206,7 @@ CREATE TABLE invoice_record (
     contract_id     BIGINT NOT NULL COMMENT '关联合同ID',
     invoice_no      VARCHAR(100) COMMENT '发票号码',
     amount          DECIMAL(18,2) NOT NULL COMMENT '开票金额（元）',
+    tax_rate        DECIMAL(5,2) DEFAULT 13 COMMENT '税率',
     invoice_date    DATE COMMENT '开票时间',
     invoice_type    VARCHAR(50) COMMENT '发票类型',
     invoice_file    VARCHAR(500) COMMENT '发票附件路径',
@@ -319,7 +323,7 @@ INSERT INTO sys_role (id, role_name, role_code, description, is_system) VALUES
 
 -- 默认管理员（密码 admin123，bcrypt加密）
 INSERT INTO sys_user (username, password, real_name, role_id, status)
-VALUES ('admin', '$2b$12$LJ3m4ys3Lk0TSwHCpNqrGO8rYkCvKwN/WAVGFHcxdSXJGR4AxzQqu', '系统管理员', 1, 1);
+VALUES ('admin', '$2b$12$hlCyVi8jVFwKgER3exSh4eNJpAH2CgSiM1U95H9QxlsndXFo5fRI6', '系统管理员', 1, 1);
 
 -- 权限
 INSERT INTO sys_permission (id, perm_name, perm_code, perm_type, module, path, icon, sort_order) VALUES
