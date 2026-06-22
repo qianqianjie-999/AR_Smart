@@ -1,6 +1,13 @@
 import os
 from datetime import timedelta
 from urllib.parse import quote_plus
+from dotenv import load_dotenv
+
+# 加载 .env 文件（项目根目录，在 Config 类定义之前）
+_project_root = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+_dotenv_path = os.path.join(_project_root, '.env')
+if os.path.exists(_dotenv_path):
+    load_dotenv(_dotenv_path)
 
 
 class Config:
